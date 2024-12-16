@@ -4,7 +4,7 @@ from vocode.streaming.models.synthesizer import (
     AzureSynthesizerConfig,
     CartesiaSynthesizerConfig,
     ElevenLabsSynthesizerConfig,
-    PlayHtSynthesizerConfig,
+    # PlayHtSynthesizerConfig,
     RimeSynthesizerConfig,
     StreamElementsSynthesizerConfig,
     SynthesizerConfig,
@@ -15,8 +15,8 @@ from vocode.streaming.synthesizer.base_synthesizer import BaseSynthesizer
 from vocode.streaming.synthesizer.cartesia_synthesizer import CartesiaSynthesizer
 from vocode.streaming.synthesizer.eleven_labs_synthesizer import ElevenLabsSynthesizer
 from vocode.streaming.synthesizer.eleven_labs_websocket_synthesizer import ElevenLabsWSSynthesizer
-#from vocode.streaming.synthesizer.play_ht_synthesizer import PlayHtSynthesizer
-#from vocode.streaming.synthesizer.play_ht_synthesizer_v2 import PlayHtSynthesizerV2
+# from vocode.streaming.synthesizer.play_ht_synthesizer import PlayHtSynthesizer
+# from vocode.streaming.synthesizer.play_ht_synthesizer_v2 import PlayHtSynthesizerV2
 from vocode.streaming.synthesizer.rime_synthesizer import RimeSynthesizer
 from vocode.streaming.synthesizer.stream_elements_synthesizer import StreamElementsSynthesizer
 

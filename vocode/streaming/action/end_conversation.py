@@ -8,12 +8,9 @@ from vocode.streaming.models.actions import ActionConfig as VocodeActionConfig
 from vocode.streaming.models.actions import ActionInput, ActionOutput
 
 _END_CONVERSATION_ACTION_DESCRIPTION = """
-Ends the current conversation; use this when we should hang up. Use this
-when: someone has indicated they expect the call to finish, and there are no further objectives
-to complete. If the user says Goodbye or a different farewell phrase, this indicates that we should
-hang up. Example farewell phrases: goodbye, so long, see you, later, take care, etc. People will
-sometimes say a farewell phrase at the end of a longer sentence, so make sure to hang up then
-as well. Example: \"This sounds great! Talk to you soon.\""""
+Ends the current conversation. Use this action when it is clear that the caller expects the call to end, and there are no further objectives to address. Common scenarios include when the user explicitly says goodbye or uses another farewell phrase. 
+Farewell phrases in English and Estonian may include: goodbye, see you, take care, so long, later, nägemist, head aega, etc. 
+Note that farewell phrases may sometimes be part of a longer sentence, so listen carefully for context. For example: "This sounds great! Talk to you soon." In such cases, the conversation should also be concluded."""
 
 
 class EndConversationParameters(BaseModel):

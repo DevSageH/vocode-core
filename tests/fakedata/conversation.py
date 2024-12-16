@@ -7,7 +7,7 @@ from vocode.streaming.agent.base_agent import BaseAgent
 from vocode.streaming.models.agent import AgentConfig, ChatGPTAgentConfig
 from vocode.streaming.models.audio import AudioEncoding
 from vocode.streaming.models.message import BaseMessage
-from vocode.streaming.models.synthesizer import PlayHtSynthesizerConfig, SynthesizerConfig
+#from vocode.streaming.models.synthesizer import PlayHtSynthesizerConfig, SynthesizerConfig
 from vocode.streaming.models.transcriber import DeepgramTranscriberConfig, TranscriberConfig
 from vocode.streaming.output_device.abstract_output_device import AbstractOutputDevice
 from vocode.streaming.output_device.audio_chunk import ChunkState
@@ -27,11 +27,11 @@ DEFAULT_DEEPGRAM_TRANSCRIBER_CONFIG = DeepgramTranscriberConfig(
     tier="nova",
 )
 
-DEFAULT_SYNTHESIZER_CONFIG = PlayHtSynthesizerConfig(
-    voice_id="test_voice_id",
-    sampling_rate=DEFAULT_SAMPLING_RATE,
-    audio_encoding=AudioEncoding.MULAW,
-)
+# DEFAULT_SYNTHESIZER_CONFIG = PlayHtSynthesizerConfig(
+#     voice_id="test_voice_id",
+#     sampling_rate=DEFAULT_SAMPLING_RATE,
+#     audio_encoding=AudioEncoding.MULAW,
+# )
 
 DEFAULT_CHAT_GPT_AGENT_CONFIG = ChatGPTAgentConfig(
     prompt_preamble="You are an agent of chaos", initial_message=BaseMessage(text="Hi there!")

@@ -213,10 +213,6 @@ class AzureSynthesizer(BaseSynthesizer[AzureSynthesizerConfig]):
         voice.set("name", synthesizer_config.voice_name)  # Use the multilingual neural voice, e.g., 'en-US-AvaMultilingualNeural'
 
         # Add optional prosody settings (like pitch, rate)
-        if " " in message:
-            silence = ElementTree.SubElement(voice_root, "{%s}silence" % NAMESPACES.get("mstts"))
-            silence.set("value", "500ms")
-            silence.set("type", "Tailing-exact")
         prosody = ElementTree.SubElement(voice, "prosody")
         prosody.set("pitch", f"{synthesizer_config.pitch}%")
         prosody.set("rate", f"{synthesizer_config.rate}%")

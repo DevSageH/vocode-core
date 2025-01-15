@@ -197,34 +197,59 @@ class AzureSynthesizer(BaseSynthesizer[AzureSynthesizerConfig]):
             return len(regmatch.group(1))
         return 0
 
+
     @staticmethod
     def create_ssml(message: str, synthesizer_config: AzureSynthesizerConfig) -> str:
-        voice_language_code = synthesizer_config.voice_name[:5]
-        ssml_root = ElementTree.fromstring(
-            f'<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="{voice_language_code}"></speak>'
+        """
+        Creates SSML for Azure Text-to-Speech with multilingual auto-detection.
+        """
+        ssml_root = ElementTree.Element(
+            "speak",
+            version="1.0",
+            xmlns="https://www.w3.org/2001/10/synthesis",
+            attrib={"xml:lang": "und"}  # 'und' stands for 'undefined'; lets Azure auto-detect the language
         )
         voice = ElementTree.SubElement(ssml_root, "voice")
-        voice.set("name", synthesizer_config.voice_name)
-        if synthesizer_config.language_code != "en-US":
-            lang = ElementTree.SubElement(voice, "{%s}lang" % NAMESPACES.get(""))
-            lang.set("xml:lang", synthesizer_config.language_code)
-            voice_root = lang
-        else:
-            voice_root = voice
-        # this ugly hack is necessary so we can limit the gap between sentences
-        # for normal sentences, it seems like the gap is > 500ms, so we're able to reduce it to 500ms
-        # for very tiny sentences, the API hangs - so we heuristically only update the silence gap
-        # if there is more than one word in the sentence
-        if " " in message:
-            silence = ElementTree.SubElement(voice_root, "{%s}silence" % NAMESPACES.get("mstts"))
-            silence.set("value", "500ms")
-            silence.set("type", "Tailing-exact")
-        prosody = ElementTree.SubElement(voice_root, "prosody")
+        voice.set("name", synthesizer_config.voice_name)  # Use the multilingual neural voice, e.g., 'en-US-AvaMultilingualNeural'
+
+        # Add optional prosody settings (like pitch, rate)
+        prosody = ElementTree.SubElement(voice, "prosody")
         prosody.set("pitch", f"{synthesizer_config.pitch}%")
         prosody.set("rate", f"{synthesizer_config.rate}%")
-        prosody.text = message.strip()
+        prosody.text = message.strip()  # Add the text message
+
+        # Convert the XML tree to an SSML string
         ssml = ElementTree.tostring(ssml_root, encoding="unicode")
         return ssml
+
+    # @staticmethod
+    # def create_ssml(message: str, synthesizer_config: AzureSynthesizerConfig) -> str:
+    #     voice_language_code = synthesizer_config.voice_name[:5]
+    #     ssml_root = ElementTree.fromstring(
+    #         f'<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="{voice_language_code}"></speak>'
+    #     )
+    #     voice = ElementTree.SubElement(ssml_root, "voice")
+    #     voice.set("name", synthesizer_config.voice_name)
+    #     if synthesizer_config.language_code != "en-US":
+    #         lang = ElementTree.SubElement(voice, "{%s}lang" % NAMESPACES.get(""))
+    #         lang.set("xml:lang", synthesizer_config.language_code)
+    #         voice_root = lang
+    #     else:
+    #         voice_root = voice
+    #     # this ugly hack is necessary so we can limit the gap between sentences
+    #     # for normal sentences, it seems like the gap is > 500ms, so we're able to reduce it to 500ms
+    #     # for very tiny sentences, the API hangs - so we heuristically only update the silence gap
+    #     # if there is more than one word in the sentence
+    #     if " " in message:
+    #         silence = ElementTree.SubElement(voice_root, "{%s}silence" % NAMESPACES.get("mstts"))
+    #         silence.set("value", "500ms")
+    #         silence.set("type", "Tailing-exact")
+    #     prosody = ElementTree.SubElement(voice_root, "prosody")
+    #     prosody.set("pitch", f"{synthesizer_config.pitch}%")
+    #     prosody.set("rate", f"{synthesizer_config.rate}%")
+    #     prosody.text = message.strip()
+    #     ssml = ElementTree.tostring(ssml_root, encoding="unicode")
+    #     return ssml
 
     def synthesize_ssml(self, ssml: str) -> speechsdk.AudioDataStream:
         result = self.synthesizer.start_speaking_ssml_async(ssml).get()

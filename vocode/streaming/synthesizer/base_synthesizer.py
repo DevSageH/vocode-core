@@ -50,7 +50,7 @@ FILLER_PHRASES = [
     BaseMessage(text="Let me see..."),
 ]
 FILLER_AUDIO_PATH = os.path.join(os.path.dirname(__file__), "filler_audio")
-TYPING_NOISE_PATH = "%s/filler_sound.wav" % FILLER_AUDIO_PATH
+TYPING_NOISE_PATH = "%s/homepod_44_10_short.wav" % FILLER_AUDIO_PATH
 
 
 def encode_as_wav(chunk: bytes, synthesizer_config: SynthesizerConfig) -> bytes:

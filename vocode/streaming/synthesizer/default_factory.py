@@ -32,11 +32,6 @@ class DefaultSynthesizerFactory(AbstractSynthesizerFactory):
             if synthesizer_config.experimental_websocket:
                 eleven_labs_synthesizer_class_type = ElevenLabsWSSynthesizer
             return eleven_labs_synthesizer_class_type(synthesizer_config)
-        # elif isinstance(synthesizer_config, PlayHtSynthesizerConfig):
-        #     if synthesizer_config.version == "2":
-        #         return PlayHtSynthesizerV2(synthesizer_config)
-            #else:
-            #    return PlayHtSynthesizer(synthesizer_config)
         elif isinstance(synthesizer_config, RimeSynthesizerConfig):
             return RimeSynthesizer(synthesizer_config)
         elif isinstance(synthesizer_config, StreamElementsSynthesizerConfig):

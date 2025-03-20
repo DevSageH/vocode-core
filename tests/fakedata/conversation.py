@@ -27,12 +27,6 @@ DEFAULT_DEEPGRAM_TRANSCRIBER_CONFIG = DeepgramTranscriberConfig(
     tier="nova",
 )
 
-# DEFAULT_SYNTHESIZER_CONFIG = PlayHtSynthesizerConfig(
-#     voice_id="test_voice_id",
-#     sampling_rate=DEFAULT_SAMPLING_RATE,
-#     audio_encoding=AudioEncoding.MULAW,
-# )
-
 DEFAULT_CHAT_GPT_AGENT_CONFIG = ChatGPTAgentConfig(
     prompt_preamble="You are an agent of chaos", initial_message=BaseMessage(text="Hi there!")
 )

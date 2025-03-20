@@ -14,8 +14,8 @@ _SYNTHESIZER_NAMES = {
     "AzureSynthesizer": "azure",
     "ElevenLabsSynthesizer": "eleven_labs",
     "ElevenLabsWSSynthesizer": "eleven_labs_ws",
-    #"PlayHtSynthesizer": "play_ht",
-    #"PlayHtSynthesizerV2": "play_ht_v2",
+    "PlayHtSynthesizer": "play_ht",
+    # "PlayHtSynthesizerV2": "play_ht_v2",
     "RimeSynthesizer": "rime",
 }
 
@@ -135,7 +135,7 @@ class SentryConfiguredContextManager:
         if self.is_configured:
             return self.func(*self.args, **self.kwargs)
         else:
-            logger.debug("Sentry is not configured, skipping function execution.")
+            # logger.debug("Sentry is not configured, skipping function execution.")
             return None
 
     def execute(self) -> Optional[Any]:

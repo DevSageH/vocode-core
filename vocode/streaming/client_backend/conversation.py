@@ -54,6 +54,7 @@ class ConversationRouter(BaseRouter):
             AzureSynthesizerConfig.from_output_audio_config(output_audio_config=output_audio_config)
         ),
         conversation_endpoint: str = BASE_CONVERSATION_ENDPOINT,
+        router: APIRouter = None,
     ):
         super().__init__()
         self.transcriber_thunk = transcriber_thunk

@@ -4,7 +4,7 @@ from vocode.streaming.models.synthesizer import (
     AzureSynthesizerConfig,
     CartesiaSynthesizerConfig,
     ElevenLabsSynthesizerConfig,
-    PlayHtSynthesizerConfig,
+    # PlayHtSynthesizerConfig,
     RimeSynthesizerConfig,
     StreamElementsSynthesizerConfig,
     SynthesizerConfig,

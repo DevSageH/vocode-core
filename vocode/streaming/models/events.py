@@ -20,10 +20,15 @@ class EventType(str, Enum):
     PHONE_CALL_DID_NOT_CONNECT = "event_phone_call_did_not_connect"
     RECORDING = "event_recording"
     ACTION = "event_action"
+    CALL_INITIATED = "event_call_initiated"
+    CALL_INITIATION_ERROR = "event_call_initiation_error"
 
 
 class Event(TypedModel):
     conversation_id: str
+
+class CallInitiatedEvent(Event, type=EventType.CALL_INITIATED):  # type: ignore
+    to_phone_number: str
 
 
 class PhoneCallConnectedEvent(Event, type=EventType.PHONE_CALL_CONNECTED):  # type: ignore
@@ -46,3 +51,9 @@ class RecordingEvent(Event, type=EventType.RECORDING):  # type: ignore
 class ActionEvent(Event, type=EventType.ACTION):  # type: ignore
     action_input: Optional[dict] = None
     action_output: Optional[dict] = None
+
+
+class ExtendedPhoneCallDidNotConnectEvent(Event, type=EventType.PHONE_CALL_DID_NOT_CONNECT):  #type: ignore
+    telephony_status: str
+    to_phone_number: Optional[str] = None
+    error_detail: Optional[str] = None

@@ -76,12 +76,12 @@ synthesizer=ElevenLabsWSSynthesizer(ElevenLabsSynthesizerConfig.from_output_devi
 We now support Play.ht's new [gRPC streaming API](https://docs.play.ht/reference/python-sdk-audio-streaming), which runs much faster than their HTTP API and is designed for realtime communication.
 
 ```python
-...
-synthesizer_config=PlayHtSynthesizerConfig.from_telephone_output_device(
-    api_key=os.getenv("PLAY_HT_API_KEY"),
-    user_id=os.getenv("PLAY_HT_USER_ID"),
-)
-...
+{/* ... */}
+{/* synthesizer_config=PlayHtSynthesizerConfig.from_telephone_output_device( */}
+{/*     api_key=os.getenv("PLAY_HT_API_KEY"), */}
+{/*     user_id=os.getenv("PLAY_HT_USER_ID"), */}
+{/* ) */}
+{/* ... */}
 ```
 
 ### Example 2: Using Cartesia's streaming synthesizer

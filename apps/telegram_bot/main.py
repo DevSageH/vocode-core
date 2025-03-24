@@ -19,7 +19,6 @@ from vocode.turn_based.synthesizer import (
     CoquiSynthesizer,
     CoquiTTSSynthesizer,
     ElevenLabsSynthesizer,
-    PlayHtSynthesizer,
     RimeSynthesizer,
     StreamElementsSynthesizer,
 )
@@ -36,7 +35,6 @@ supported_classes = [
     CoquiSynthesizer,
     StreamElementsSynthesizer,
     ElevenLabsSynthesizer,
-    PlayHtSynthesizer,
     AzureSynthesizer,
     CoquiTTSSynthesizer,
     RimeSynthesizer,
@@ -54,7 +52,6 @@ SYSTEM_PROMPT = "You are having a voice-to-voice conversation with a user. Alway
 # key=synth class, value=attribute that chooses the provider voice
 voice_attr_of: Dict[Type[BaseSynthesizer], str] = {
     ElevenLabsSynthesizer: "voice_id",
-    PlayHtSynthesizer: "voice",
     StreamElementsSynthesizer: "voice",
     AzureSynthesizer: "voice_name",
     CoquiSynthesizer: "voice_id",

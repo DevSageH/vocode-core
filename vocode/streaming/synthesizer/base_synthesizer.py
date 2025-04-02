@@ -200,6 +200,8 @@ class CachedAudio:
                 size_of_silence *= 2
             elif self.synthesizer_config.audio_encoding == AudioEncoding.MULAW:
                 silence_byte = MULAW_SILENCE_BYTE
+            else:
+                silence_byte = MULAW_SILENCE_BYTE
 
             for _ in range(
                 0,

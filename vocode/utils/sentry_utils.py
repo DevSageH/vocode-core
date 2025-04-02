@@ -14,7 +14,7 @@ _SYNTHESIZER_NAMES = {
     "AzureSynthesizer": "azure",
     "ElevenLabsSynthesizer": "eleven_labs",
     "ElevenLabsWSSynthesizer": "eleven_labs_ws",
-    "PlayHtSynthesizer": "play_ht",
+    # "PlayHtSynthesizer": "play_ht",
     # "PlayHtSynthesizerV2": "play_ht_v2",
     "RimeSynthesizer": "rime",
 }

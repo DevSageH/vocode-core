@@ -171,25 +171,25 @@ class CoquiSynthesizerConfig(SynthesizerConfig, type=SynthesizerType.COQUI.value
         return voice_id or COQUI_DEFAULT_SPEAKER_ID
 
 
-PlayHtVoiceVersionType = Literal["1", "2"]
+# PlayHtVoiceVersionType = Literal["1", "2"]
 
 
-class PlayHtSynthesizerConfig(SynthesizerConfig, type=SynthesizerType.PLAY_HT.value):  # type: ignore
-    voice_id: str
-    api_key: Optional[str] = None
-    user_id: Optional[str] = None
-    speed: Optional[float] = None
-    seed: Optional[int] = None
-    temperature: Optional[float] = None
-    quality: Optional[str] = None
-    experimental_streaming: bool = False
-    version: Literal[PlayHtVoiceVersionType] = "2"
-    top_p: Optional[float] = None
-    text_guidance: Optional[float] = None
-    voice_guidance: Optional[float] = None
-    on_prem: bool = False
-    on_prem_provider: Literal["aws", "gcp"] = "gcp"
-    experimental_remove_silence: bool = False
+# class PlayHtSynthesizerConfig(SynthesizerConfig, type=SynthesizerType.PLAY_HT.value):  # type: ignore
+#     voice_id: str
+#     api_key: Optional[str] = None
+#     user_id: Optional[str] = None
+#     speed: Optional[float] = None
+#     seed: Optional[int] = None
+#     temperature: Optional[float] = None
+#     quality: Optional[str] = None
+#     experimental_streaming: bool = False
+#     version: Literal[PlayHtVoiceVersionType] = "2"
+#     top_p: Optional[float] = None
+#     text_guidance: Optional[float] = None
+#     voice_guidance: Optional[float] = None
+#     on_prem: bool = False
+#     on_prem_provider: Literal["aws", "gcp"] = "gcp"
+#     experimental_remove_silence: bool = False
 
 
 class CoquiTTSSynthesizerConfig(

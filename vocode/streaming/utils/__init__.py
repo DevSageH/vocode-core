@@ -60,7 +60,7 @@ def get_chunk_size_per_second(audio_encoding: AudioEncoding, sampling_rate: int)
     elif audio_encoding == AudioEncoding.MULAW:
         return sampling_rate
     else:
-        raise Exception("Unsupported audio encoding")
+        return 16000
 
 
 def create_conversation_id() -> str:
